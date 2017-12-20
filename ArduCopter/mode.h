@@ -1132,3 +1132,41 @@ protected:
 private:
 
 };
+
+
+class ModeDeadman : public Mode {
+
+public:
+
+    ModeDeadman(Copter &copter) :
+        Copter::Mode(copter)
+        { }
+
+    virtual bool init(bool ignore_checks) override;
+    virtual void run() override;
+
+    virtual bool requires_GPS() const override { return false; }
+    virtual bool has_manual_throttle() const override { return true; }
+    virtual bool allows_arming(bool from_gcs) const override { return true; };
+    virtual bool is_autopilot() const override { return false; }
+
+protected:
+
+    const char *name() const override { return "DEADMAN"; }
+    const char *name4() const override { return "DEAD"; }
+
+private:
+
+    void reset_timer(uint32_t& timer_ms);
+    bool is_timeout(uint32_t start_ms, uint32_t limit_duration);
+    bool is_changed_pilot_input(float current_roll, float current_pitch, float current_yaw, float current_throttle);
+    bool is_neutral(float roll, float pitch, float yaw, float throttle);
+
+    bool is_pilot_active;
+    uint32_t deadman_timer_start_ms;
+    uint32_t input_sampling_timer_start_ms;
+    float previous_input_roll;
+    float previous_input_pitch;
+    float previous_input_yaw;
+    float previous_input_throttle;
+};
