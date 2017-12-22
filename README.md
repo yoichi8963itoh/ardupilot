@@ -1,3 +1,15 @@
+## New Flight Mode: Deadman ##
+
+- This is a submittion for AuduPilot FlightMode Workshop in the Drone Software Engineer Training Course vol.4, "ArduPilot Flight Code Programing Course".
+
+- The new flight mode "Deadman" is the same as Stablize mode but protected by a [deadman](https://en.wikipedia.org/wiki/Dead_man%27s_switch).
+
+- The deadman is activated by a timer, and the copter hovers at the constant position.
+
+- The timer is reset when pilot input changed or the copter resumed normal flight.
+
+- The copter resumes normal flight when roll, pitch, yaw and throttle are all neutral.
+
 # ArduPilot Project
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ArduPilot/ardupilot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
