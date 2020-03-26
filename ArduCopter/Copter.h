@@ -967,6 +967,15 @@ private:
 #if MODE_AUTOROTATE_ENABLED == ENABLED
     ModeAutorotate mode_autorotate;
 #endif
+<<<<<<< HEAD
+=======
+    ModeSport mode_sport{*this};
+    ModeAvoidADSB mode_avoid_adsb{*this};
+    ModeThrow mode_throw{*this};
+    ModeGuidedNoGPS mode_guided_nogps{*this};
+    ModeSmartRTL mode_smartrtl{*this};
+    ModeQuantize mode_quantize(*this);
+>>>>>>> 9b224f3d315b4aed386eecfb93229f9259a9f5bd
 
     // mode.cpp
     Mode *mode_from_mode_num(const Mode::Number mode);

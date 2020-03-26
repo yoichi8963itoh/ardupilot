@@ -1351,6 +1351,7 @@ private:
 
 };
 
+<<<<<<< HEAD
 class ModeFollow : public ModeGuided {
 
 public:
@@ -1505,3 +1506,30 @@ private:
 
 };
 #endif
+=======
+
+class ModeQuantize : public Mode {
+
+public:
+
+    ModeQuantize(Copter &copter) :
+        Copter::Mode(copter)
+        { }
+
+    virtual bool init(bool ignore_checks) override;
+    virtual void run() override;
+
+    virtual bool requires_GPS() const override { return true; }
+    virtual bool has_manual_throttle() const override { return false; }
+    virtual bool allows_arming(bool from_gcs) const override { return true; };
+    virtual bool is_autopilot() const override { return false; }
+
+protected:
+
+    const char *name() const override { return "QUANTIZE"; }
+    const char *name4() const override { return "QANT"; }
+
+private:
+
+};
+>>>>>>> 9b224f3d315b4aed386eecfb93229f9259a9f5bd
